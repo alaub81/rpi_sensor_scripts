@@ -8,9 +8,9 @@ import time, ssl, systemd.daemon
 dht22gpiopin=17
 broker = "FQDN / IP ADDRESS"
 port = 8883
-mqttclientid = "clientid-dp-homie"
-clientid = "clientid-dp"
-clientname = "Clientname Display"
+mqttclientid = "clientid-dht22-homie"
+clientid = "clientid-dht22"
+clientname = "Clientname DHT22 Sensor"
 nodes="dht22"
 username = "mosquitto"
 password = "password"
