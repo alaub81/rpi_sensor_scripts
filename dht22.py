@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import time, adafruit_dht
 
-gpiopin=4
+gpiopin=17
 
 # Initial the dht device, with data pin connected to:
 dhtDevice = adafruit_dht.DHT22(gpiopin)
