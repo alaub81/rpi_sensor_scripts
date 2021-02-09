@@ -17,10 +17,10 @@ systemctl restart dht22_homie.service
 
 # more details
 * https://www.laub-home.de/wiki/Raspberry_Pi_BH1750_Helligkeitssensor
+* https://www.laub-home.de/wiki/Raspberry_Pi_TSL2561_Helligkeitssensor
 * https://www.laub-home.de/wiki/Raspberry_Pi_DHT22_Temperatur_Sensor
 * https://www.laub-home.de/wiki/Raspberry_Pi_BMP180_Luftdruck_Sensor
 * https://www.laub-home.de/wiki/Raspberry_Pi_BME280_Luftdruck_Sensor
 * https://www.laub-home.de/wiki/Raspberry_Pi_BMP280_Luftdruck_Sensor
 * https://www.laub-home.de/wiki/Raspberry_Pi_DS18B20_Temperatur_Sensor
 * https://www.laub-home.de/wiki/Raspberry_Pi_BME680_Gas_Sensor
-* https://www.laub-home.de/wiki/Raspberry_Pi_TSL2561_Helligkeitssensor
