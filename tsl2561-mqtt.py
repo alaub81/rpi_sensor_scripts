@@ -8,14 +8,12 @@ import time
 import ssl
 
 # set the variables
-#broker='FQDN / IP Adresse'
-broker='laub-raspi4.laub.loc'
+broker='FQDN / IP Adresse'
 port=8883
 publish_topic="house/pi-tsl2561"
 clientid='python-mqtt-tsl2561'
 username='mosquitto'
-#password='password'
-password='Karma33$'
+password='password'
 insecure=True
 qos=1
 retain_message=True
