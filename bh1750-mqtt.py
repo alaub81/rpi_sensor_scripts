@@ -7,8 +7,6 @@ import adafruit_bh1750
 import time
 import ssl
 
-time.sleep(25)
-
 # set the variables
 broker='FQDN / IP Adresse'
 port=8883
