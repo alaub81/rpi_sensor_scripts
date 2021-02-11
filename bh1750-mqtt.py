@@ -10,7 +10,7 @@ import ssl
 # set the variables
 broker='FQDN / IP Adresse'
 port=8883
-publish_topic="house/pi-bh1750"
+publish_topic='house/pi-bh1750'
 clientid='python-mqtt-bh1750'
 username='mosquitto'
 password='password'
