@@ -21,8 +21,6 @@ retain_message = True
 mqttretry = 5
 # how often should be a publish to MQTT (in Seconds)
 publishtime=15
-# Retry to connect to mqtt broker
-mqttretry = 5
 
 # do the stuff
 ### Functions
