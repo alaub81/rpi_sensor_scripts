@@ -1,0 +1,39 @@
+# systemd unit file for the Python BSEC BME680 Homie Service
+[Unit]
+
+# Human readable name of the unit
+Description=TSL2561 MQTT Homie Service
+
+# Starting after System is online and docker is running
+# Only needed if MQTT is used
+Wants=network-online.target
+After=network-online.target
+After=docker.service
+After=docker.socket
+
+[Service]
+
+# Command to execute when the service is started
+ExecStart=/usr/bin/python3 /usr/local/sbin/tsl2561-homie.py
+
+# Disable Python's buffering of STDOUT and STDERR, so that output from the
+# service shows up immediately in systemd's logs
+Environment=PYTHONUNBUFFERED=1
+
+# Automatically restart the service if it crashes
+Restart=on-failure
+
+# Our service will notify systemd once it is up and running
+Type=notify
+
+# Use a dedicated user to run our service
+User=root
+
+# Send CTRL+C tot python Script to terminate it clean
+KillSignal=SIGINT
+
+[Install]
+
+# Tell systemd to automatically start this service when the system boots
+# (assuming the service is enabled)
+WantedBy=default.target
