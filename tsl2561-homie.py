@@ -54,7 +54,7 @@ def on_disconnect(client, userdata, rc):
   print("MQTT Connection disconnected, Returned code=",rc)
 
 def sensorpublish():
-  publish(nodes + "/lux","{}".format(sensor.lux))
+  publish(nodes + "/lux","{}".format(lux))
   publish(nodes + "/broadband","{}".format(sensor.broadband))
   publish(nodes + "/infrared","{}".format(sensor.infrared))
 
@@ -97,6 +97,9 @@ while True:
     # A value 0 is 13.7ms, 1 is 101ms, 2 is 402ms, and 3 is manual mode.
     sensor.integration_time = 1
     # publishing the stuff
+    lux = sensor.lux
+    if lux == None:
+      lux = 0
     sensorpublish()
     time.sleep(publishtime)
 
