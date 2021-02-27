@@ -6,10 +6,10 @@ Description=DHT22 MQTT Homie Service
 
 # Starting after System is online and docker is running
 # Only needed if MQTT is used
-Wants=network-online.target
-After=network-online.target
-After=docker.service
-After=docker.socket
+#Wants=network-online.target
+#After=network-online.target
+#After=docker.service
+#After=docker.socket
 
 [Service]
 
