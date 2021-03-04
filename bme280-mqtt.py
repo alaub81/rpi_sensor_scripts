@@ -41,3 +41,6 @@ client.publish("{}/pressure".format(publish_topic),"{:.2f}".format(bme280.pressu
 client.publish("{}/altitude".format(publish_topic),"{:.2f}".format(bme280.altitude),qos,retain_message)
 client.publish("{}/sealevelpressure".format(publish_topic),"{:.2f}".format(bme280.sea_level_pressure),qos,retain_message)
 
+ctime.sleep(1)
+client.disconnect()
+client.loop_stop()
