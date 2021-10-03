@@ -17,8 +17,6 @@ password = "password"
 insecure = True
 qos = 1
 retain_message = True
-# Retry to connect to mqtt broker
-mqttretry = 5
 # how often should be a publish to MQTT (in Seconds)
 publishtime=15
 # Retry to connect to mqtt broker
