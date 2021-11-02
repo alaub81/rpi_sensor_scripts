@@ -90,8 +90,6 @@ client.on_disconnect = on_disconnect
 while True:
   try:
     temperature, humidity = dhtDevice.temperature, dhtDevice.humidity
-    sensorpublish()
-    time.sleep(publishtime)
     #print(temperature, humidity)
     if humidity <= 100:
       sensorpublish()
