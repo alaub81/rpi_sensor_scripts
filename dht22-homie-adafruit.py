@@ -86,8 +86,6 @@ client.on_disconnect = on_disconnect
 while True:
   try:
     humidity, temperature = Adafruit_DHT.read_retry(Adafruit_DHT.AM2302, dht22gpiopin)
-    sensorpublish()
-    time.sleep(publishtime)
     #print(temperature, humidity)
     if humidity <= 100:
       sensorpublish()
