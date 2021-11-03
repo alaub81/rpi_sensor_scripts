@@ -5,7 +5,8 @@ import digitalio
 import adafruit_bmp280
 import time
 
-i2c = busio.I2C(board.D27, board.D17)
+#i2c = busio.I2C(board.D27, board.D17)
+i2c = busio.I2C(board.SCL, board.SDA)
 bmp280 = adafruit_bmp280.Adafruit_BMP280_I2C(i2c, address=0x76)
 
 print("Temperature: %0.1f C" % bmp280.temperature)
