@@ -94,7 +94,8 @@ while True:
     if humidity <= 100:
       sensorpublish()
       time.sleep(publishtime)
-      #print(temperature, humidity)    
+      #print(temperature, humidity)
+    time.sleep(3)
 
   except RuntimeError as error:
     print(error.args[0])
