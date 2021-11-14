@@ -1,4 +1,4 @@
-# systemd unit file for the Python BSEC BME680 Homie Service
+# systemd unit file for the Python TSL2561 Homie Service
 [Unit]
 
 # Human readable name of the unit
