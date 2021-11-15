@@ -5,20 +5,20 @@ import Adafruit_DHT
 import time, ssl, systemd.daemon
 
 # set the variables
-dht22gpiopin=17
+dht22gpiopin = 17
 broker = "FQDN / IP ADDRESS"
 port = 8883
 mqttclientid = "clientid-dht22-homie"
 clientid = "clientid-dht22"
 clientname = "Clientname DHT22 Sensor"
-nodes="dht22"
+nodes = "dht22"
 username = "mosquitto"
 password = "password"
 insecure = True
 qos = 1
 retain_message = True
 # how often should be a publish to MQTT (in Seconds)
-publishtime=15
+publishtime = 120
 # Retry to connect to mqtt broker
 mqttretry = 5
 
