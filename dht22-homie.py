@@ -2,10 +2,10 @@
 # Import required Python libraries
 import paho.mqtt.client as mqtt
 import adafruit_dht
-import time, ssl, systemd.daemon
+import board, time, ssl, systemd.daemon
 
 # set the variables
-dht22gpiopin=17
+dht22gpiopin = "D17"
 broker = "FQDN / IP ADDRESS"
 port = 8883
 mqttclientid = "clientid-dht22-homie"
@@ -56,8 +56,16 @@ def sensorpublish():
   publish(nodes + "/humidity","{:.1f}".format(humidity))
 
 # running the Script
-# define DHT22
-dhtDevice = adafruit_dht.DHT22(dht22gpiopin)
+# Initial the dht device, with data pin connected to:
+dhtboard = getattr(board, dht22gpiopin)
+
+# Standard 
+#dhtDevice = adafruit_dht.DHT22(dhtboard)
+
+# you can pass DHT 22 use_pulseio=False if you don't want to use pulseio
+# this may be necessary on the Pi zero but will not work in
+# circuit python
+dhtDevice = adafruit_dht.DHT22(dhtboard, use_pulseio=False)
 time.sleep(1)
 
 #MQTT Connection
