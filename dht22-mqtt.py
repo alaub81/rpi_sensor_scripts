@@ -3,8 +3,7 @@
 # Import required Python libraries
 import paho.mqtt.client as mqtt
 import adafruit_dht
-import time
-import ssl
+import time, board, ssl
 
 # set the variables
 dht22gpiopin='D17'
