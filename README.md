@@ -16,6 +16,7 @@ systemctl restart dht22_homie.service
 ```
 
 # more details
+* https://www.laub-home.de/wiki/Raspberry_Pi_DHT22_Sensor_als_Homie_MQTT_Device
 * https://www.laub-home.de/wiki/Raspberry_Pi_BH1750_Helligkeitssensor
 * https://www.laub-home.de/wiki/Raspberry_Pi_TSL2561_Helligkeitssensor
 * https://www.laub-home.de/wiki/Raspberry_Pi_DHT22_Temperatur_Sensor
