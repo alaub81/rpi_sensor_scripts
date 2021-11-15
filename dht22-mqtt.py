@@ -7,7 +7,7 @@ import time
 import ssl
 
 # set the variables
-dht22gpiopin=17
+dht22gpiopin='D17'
 broker='FQDN / IP Adresse'
 port=8883
 publish_topic="house/pi-dht22"
@@ -19,8 +19,16 @@ qos=1
 retain_message=True
 
 # do the stuff
-# define DHT22
-dhtDevice = adafruit_dht.DHT22(dht22gpiopin)
+# Initial the dht device, with data pin connected to:
+dhtboard = getattr(board, dht22gpiopin)
+
+# Standard 
+#dhtDevice = adafruit_dht.DHT22(dhtboard)
+
+# you can pass DHT 22 use_pulseio=False if you don't want to use pulseio
+# this may be necessary on the Pi zero but will not work in
+# circuit python
+dhtDevice = adafruit_dht.DHT22(dhtboard, use_pulseio=False)
 
 #MQTT Connection
 client=mqtt.Client(clientid)

@@ -1,13 +1,20 @@
 #!/usr/bin/python3
 import time, adafruit_dht, board
 
+# set the variable
+dht22gpiopin = 'D17'
+
+
 # Initial the dht device, with data pin connected to:
-dhtDevice = adafruit_dht.DHT22(board.D17)
+dhtboard = getattr(board, dht22gpiopin)
 
 # you can pass DHT 22 use_pulseio=False if you don't want to use pulseio
 # this may be necessary on the Pi zero but will not work in
 # circuit python
-#dhtDevice = adafruit_dht.DHT22(board.D17, use_pulseio=False)
+dhtDevice = adafruit_dht.DHT22(dhtboard, use_pulseio=False)
+# Standard is, but not working on the raspberry pi boards
+#dhtDevice = adafruit_dht.DHT22(dhtboard)
+
 
 try:
   # Print the values to the serial port
