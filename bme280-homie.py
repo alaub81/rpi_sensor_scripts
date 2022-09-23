@@ -19,7 +19,9 @@ retain_message=True
 # Retry to connect to mqtt broker
 mqttretry = 5
 # how often should be a publish to MQTT (in Seconds)
-publishtime=15
+publishtime = 120
+# At which value humidity alarm will be fired (x in %)
+humidityalarm = 70
 
 # do the stuff
 ### Functions
@@ -35,7 +37,7 @@ def on_connect(client, userdata, flags, rc):
   publish("$nodes",nodes)
   # homie node config
   publish(nodes + "/$name","BME280 Sensor")
-  publish(nodes + "/$properties","temperature,humidity,pressure")
+  publish(nodes + "/$properties","temperature,humidity,humidityalarm,pressure")
   publish(nodes + "/temperature/$name","Temperature")
   publish(nodes + "/temperature/$unit","°C")
   publish(nodes + "/temperature/$datatype","float")
@@ -44,6 +46,9 @@ def on_connect(client, userdata, flags, rc):
   publish(nodes + "/humidity/$unit","%")
   publish(nodes + "/humidity/$datatype","float")
   publish(nodes + "/humidity/$settable","false")
+  publish(nodes + "/humidityalarm/$name", "Humidity Alarm")
+  publish(nodes + "/humidityalarm/$datatype", "boolean")
+  publish(nodes + "/humidityalarm/$settable", "false")
   publish(nodes + "/pressure/$name","Pressure")
   publish(nodes + "/pressure/$unit","hPa")
   publish(nodes + "/pressure/$datatype","float")
@@ -92,9 +97,14 @@ client.on_disconnect = on_disconnect
 # finaly the loop
 while True:
   try:
+    humidity = bme280.humidity
     publish(nodes + "/temperature","{:.2f}".format(bme280.temperature))
-    publish(nodes + "/humidity","{:.2f}".format(bme280.humidity))
+    publish(nodes + "/humidity","{:.2f}".format(humidity))
     publish(nodes + "/pressure","{:.2f}".format(bme280.pressure))
+    if humidity >= humidityalarm:
+      publish(nodes + "/humidityalarm", "true")
+    else:
+      publish(nodes + "/humidityalarm", "false")
     time.sleep(publishtime)
 
   except KeyboardInterrupt:
