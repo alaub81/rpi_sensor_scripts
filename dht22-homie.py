@@ -11,7 +11,7 @@ port = 8883
 mqttclientid = "clientid-dht22-homie"
 clientid = "clientid-dht22"
 clientname = "Clientname DHT22 Sensor"
-nodes="dht22"
+nodes = "dht22"
 username = "mosquitto"
 password = "password"
 insecure = True
@@ -21,6 +21,8 @@ retain_message = True
 mqttretry = 5
 # how often should be a publish to MQTT (in Seconds)
 publishtime = 120
+# At which value humidity alarm will be fired (x in %)
+humidityalarm = 70
 
 # do the stuff
 ### Functions
@@ -45,6 +47,9 @@ def on_connect(client, userdata, flags, rc):
   publish(nodes + "/humidity/$unit","%")
   publish(nodes + "/humidity/$datatype","float")
   publish(nodes + "/humidity/$settable","false")
+  publish(nodes + "/humidityalarm/$name", "Humidity Alarm")
+  publish(nodes + "/humidityalarm/$datatype", "boolean")
+  publish(nodes + "/humidityalarm/$settable", "false")
   # homie stae ready
   publish("$state","ready")
 
@@ -54,6 +59,10 @@ def on_disconnect(client, userdata, rc):
 def sensorpublish():
   publish(nodes + "/temperature","{:.1f}".format(temperature))
   publish(nodes + "/humidity","{:.1f}".format(humidity))
+  if humidity >= humidityalarm:
+    publish(nodes + "/humidityalarm", "true")
+  else:
+    publish(nodes + "/humidityalarm", "false")
 
 # running the Script
 # Initial the dht device, with data pin connected to:

@@ -17,10 +17,12 @@ password = "password"
 insecure = True
 qos = 1
 retain_message = True
-# how often should be a publish to MQTT (in Seconds)
-publishtime = 120
 # Retry to connect to mqtt broker
 mqttretry = 5
+# how often should be a publish to MQTT (in Seconds)
+publishtime = 120
+# At which value humidity alarm will be fired (x in %)
+humidityalarm = 70
 
 # do the stuff
 ### Functions
@@ -45,6 +47,9 @@ def on_connect(client, userdata, flags, rc):
   publish(nodes + "/humidity/$unit","%")
   publish(nodes + "/humidity/$datatype","float")
   publish(nodes + "/humidity/$settable","false")
+  publish(nodes + "/humidityalarm/$name", "Humidity Alarm")
+  publish(nodes + "/humidityalarm/$datatype", "boolean")
+  publish(nodes + "/humidityalarm/$settable", "false")
   # homie stae ready
   publish("$state","ready")
 
@@ -54,6 +59,10 @@ def on_disconnect(client, userdata, rc):
 def sensorpublish():
   publish(nodes + "/temperature","{:.1f}".format(temperature))
   publish(nodes + "/humidity","{:.1f}".format(humidity))
+  if humidity >= humidityalarm:
+    publish(nodes + "/humidityalarm", "true")
+  else:
+    publish(nodes + "/humidityalarm", "false")
 
 # running the Script
 #MQTT Connection
