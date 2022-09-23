@@ -38,7 +38,7 @@ def on_connect(client, userdata, flags, rc):
   publish("$nodes",nodes)
   # homie node config
   publish(nodes + "/$name","DHT22 Sensor")
-  publish(nodes + "/$properties","temperature,humidity")
+  publish(nodes + "/$properties","temperature,humidity,humidityalarm")
   publish(nodes + "/temperature/$name","Temperature")
   publish(nodes + "/temperature/$unit","°C")
   publish(nodes + "/temperature/$datatype","float")
