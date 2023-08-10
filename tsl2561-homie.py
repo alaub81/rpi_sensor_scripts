@@ -38,7 +38,7 @@ def on_connect(client, userdata, flags, rc):
   publish(nodes + "/$name","TSL2561 Sensor")
   publish(nodes + "/$properties","lux,broadband,infrared")
   publish(nodes + "/lux/$name","Lux")
-  publish(nodes + "/lux/$unit","lux")
+  publish(nodes + "/lux/$unit","lx")
   publish(nodes + "/lux/$datatype","float")
   publish(nodes + "/lux/$settable","false")
   publish(nodes + "/broadband/$name","Broadband")
