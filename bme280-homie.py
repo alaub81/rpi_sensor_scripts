@@ -2,7 +2,7 @@
 # Import required Python libraries
 import board
 import busio
-import adafruit_bme280
+from adafruit_bme280 import basic as adafruit_bme280
 import paho.mqtt.client as mqtt
 import time
 import ssl
