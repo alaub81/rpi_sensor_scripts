@@ -78,6 +78,6 @@ while True:
     turnOff()
     exit (0)
   except :
-    print("An Error accured ... ")
+    print("An Error occurred ... ")
     time.sleep(1)
     continue
